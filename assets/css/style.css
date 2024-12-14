@@ -164,7 +164,7 @@ body {
 }
 .news-grid {
     display: grid;
-    width: 70%;
+    height: 80vh;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
 }
