@@ -158,7 +158,6 @@ body {
 
 /* News Section */
 .news-section {
-    height: 90vh;
     padding: 2rem;
     background-color: #f9f9f9;
     text-align: center;
@@ -169,7 +168,6 @@ body {
     gap: 1rem;
 }
 .news-card {
-    height: 70vh;
     background: white;
     border-radius: 8px;
     overflow: hidden;
