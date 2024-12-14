@@ -89,6 +89,7 @@ body {
     height: 100%;
     width: 100vw; /* Full viewport width */
     position: relative;
+    z-index: 1;
 }
 
 .slider-image {
@@ -102,7 +103,15 @@ body {
 
 .slide-content {
     position: relative;
+    margin-top: 25%;
     z-index: 2; /* Ensure text is above the image */
+    background: linear-gradient(
+        to top, 
+        rgb(0, 0, 0) 0%, /* Dark at the bottom */
+        rgb(0, 0, 0) 50%, /* Semi-dark in the middle */
+        rgba(51, 51, 51, 0) 100% /* Transparent at the top */
+    );
+    height: 100%;
     color: white;
     text-align: center;
     padding: 20px;
@@ -121,13 +130,16 @@ body {
 .slide-description {
     font-size: 18px;
     margin-bottom: 30px;
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+    overflow: hidden; /* Hides any overflowing content */
+    text-overflow: ellipsis;
 }
 
 .slide-button {
-    background-color: #f9666e;
+    background-color: #ffffff;
     padding: 10px 20px;
     text-decoration: none;
-    color: white;
+    color: rgb(0, 0, 0);
     border-radius: 5px;
     font-size: 16px;
 }
@@ -140,6 +152,7 @@ body {
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
+    z-index: 3;
 }
 
 .dot {
@@ -159,9 +172,13 @@ body {
 /* News Section */
 .news-section {
     padding: 2rem;
-    background-color: #f9f9f9;
-    text-align: center;
+    background-color: aqua;
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    text-align: center; /* Keeps the text centered */
 }
+
 .news-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -174,6 +191,7 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .news-card img {
+    height: 50vh;
     width: 100%;
     object-fit: cover;
 }
@@ -233,21 +251,29 @@ body {
         display: flex;
     }
     .slide-content {
+        background: linear-gradient(
+        to top, 
+        rgb(0, 0, 0) 0%, /* Dark at the bottom */
+        rgb(0, 0, 0) 50%, /* Semi-dark in the middle */
+        rgba(37, 32, 32, 0.137) 100% /* Transparent at the top */
+    );
         margin-top: 70%;
+    }
+    .slide-description {
+        margin: 0px 0px 10px;
     }
     .slider-wrapper {
         margin-top: 16%;
     }
     .slider-item {
         height: 87vh;
-        padding: 1rem;
     }
     .news-grid {
         grid-template-columns: 1fr; /* Single column layout */
     }
     .news-card {
-        width: 75%; /* Reduce the card width */
-        height: 85vh;
+        width: 90%; /* Reduce the card width */
+        height: 80vh;
         margin: 0 auto; /* Center the cards */
     }
     .footer-grid {
