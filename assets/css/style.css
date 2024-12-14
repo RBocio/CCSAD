@@ -273,7 +273,7 @@ body {
     }
     .news-card {
         width: 90%; /* Reduce the card width */
-        height: 80vh;
+        height: 83vh;
         margin: 0 auto; /* Center the cards */
     }
     .footer-grid {
