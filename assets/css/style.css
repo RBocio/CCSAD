@@ -158,13 +158,13 @@ body {
 
 /* News Section */
 .news-section {
+    height: 80vh;
     padding: 2rem;
     background-color: #f9f9f9;
     text-align: center;
 }
 .news-grid {
     display: grid;
-    height: 80vh;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
 }
