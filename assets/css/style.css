@@ -136,13 +136,15 @@ body {
 }
 
 .slide-button {
-    background-color: #ffffff;
+    background-color: transparent; /* Transparent background */
+    border: 2px solid rgb(255, 255, 255); /* Black border */
     padding: 10px 20px;
     text-decoration: none;
-    color: rgb(0, 0, 0);
-    border-radius: 5px;
+    color: rgb(255, 255, 255); /* Black text color */
+    border-radius: 5px; /* Rounded corners */
     font-size: 16px;
 }
+
 
 /* Slider Navigation Dots */
 .slider-nav {
@@ -172,7 +174,6 @@ body {
 /* News Section */
 .news-section {
     padding: 2rem;
-    background-color: aqua;
     background-size: cover; /* Ensures the image covers the entire background */
     background-position: center; /* Centers the background image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
@@ -185,10 +186,10 @@ body {
     gap: 1rem;
 }
 .news-card {
-    background: white;
+    background: rgba(7, 7, 7, 0.226);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(255, 254, 254, 0.205);
 }
 .news-card img {
     height: 50vh;
@@ -197,37 +198,284 @@ body {
 }
 .news-content {
     padding: 1rem;
+    color: white;
 }
 .news-content h5 {
     margin-bottom: 0.5rem;
 }
 
-/* Footer */
-.footer {
-    background-color: #333;
-    color: white;
-    padding: 2rem;
-    text-align: center;
+/* Catalog */
+.containers {
+    background-position: 25% center; /* Move background slightly to the left */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40vw; /* Full width of the viewport */
+    height: 100vh; /* Full height of the viewport */
+    background: #f5f5f5;
+    box-shadow: 0 30px 50px #dbdbdb;
 }
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1rem;
+
+.containers .slides .items{
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 20px;
+    box-shadow: 0 30px 50px #505050;
+    background-position: 50% 50%;
+    background-size: cover;
+    display: inline-block;
+    transition: 0.5s;
 }
-.footer-item {
+
+.slides .items:nth-child(1),
+.slides .items:nth-child(2){
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.slides .items:nth-child(3){
+    left: 90%;
+}
+.slides .items:nth-child(4){
+    left: calc(90% + 220px);
+}
+.slides .items:nth-child(5){
+    left: calc(90% + 440px);
+}
+
+/* here n = 0, 1, 2, 3,... */
+.slides .items:nth-child(n + 6){
+    left: calc(90% + 660px);
+    opacity: 0;
+}
+
+
+
+.items .content{
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    width: 300px;
     text-align: left;
+    color: #eee;
+    transform: translate(0, -50%);
+    font-family: system-ui;
+    display: none;
 }
-.footer-item img {
-    height: 50px;
-    margin-bottom: 1rem;
+
+
+.slides .items:nth-child(2) .content{
+    display: block;
 }
-.footer-item a {
-    color: #aaa;
-    text-decoration: none;
+
+
+.content .name{
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0;
+    animation: animate 1s ease-in-out 1 forwards;
 }
-.footer-item a:hover {
-    color: white;
+
+.content .des{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.3s 1 forwards;
+}
+
+.content button{
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.6s 1 forwards;
+}
+
+
+@keyframes animate {
+    from{
+        opacity: 0;
+        transform: translate(0, 100px);
+        filter: blur(33px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translate(0);
+        filter: blur(0);
+    }
+}
+
+.content button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.6s 1 forwards;
+}
+
+/* Animation for text appearance */
+@keyframes animate {
+    from {
+        opacity: 0;
+        transform: translate(0, 100px);
+        filter: blur(33px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0);
+        filter: blur(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .containers {
+        box-shadow: none; /* Optional: Remove shadow for a simpler look on small screens */
+    }
+
+    .containers .slides .items {
+        width: 150px;
+        height: 200px;
+    }
+
+    .items .content {
+        left: 50px; /* Adjust content position */
+        width: auto; /* Let the width adjust automatically */
+    }
+
+    .content .name {
+        font-size: 20px; /* Smaller text size for mobile */
+    }
+
+    .content .des {
+        font-size: 14px; /* Adjust description size */
+    }
+
+    .content button {
+        padding: 8px 16px; /* Smaller button */
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .containers {
+        height: 300px;
+    }
+
+    .containers .slides .items {
+        width: 120px;
+        height: 200px;
+    }
+
+    .content {
+        left: 30px;
+        width: 200px;
+    }
+
+    .content .name {
+        font-size: 24px;
+    }
+
+    .content button {
+        padding: 6px 12px;
+    }
+}
+
+/* Services Section */
+#services {
+    text-align: center;
+    padding: 50px;
+}
+
+#services h2 {
+    font-size: 2rem;
+}
+
+#services hr {
+    width: 50%;
+    margin: auto;
+    border: 1px solid #333;
+}
+
+.services-container {
+    display: flex;
+    flex-direction: row; /* Ensures left-to-right layout */
+    justify-content: center; /* Centers items horizontally */
+    gap: 20px; /* Adds spacing between items */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    margin-top: 30px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row; /* Ensure left-to-right alignment */
+    justify-content: center; /* Center items */
+    gap: 20px; /* Space between items */
+    flex-wrap: wrap; /* Allow wrapping for small screens */
+}
+
+/* Ensure service boxes have equal width */
+.service-box {
+    width: 300px; /* Adjust size as needed */
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.service-box img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.service-box h4 {
+    margin: 15px 0 10px;
+}
+
+@media (max-width: 768px) {
+    .services-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-section {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* About */
+#about, #history, #owner {
+    background-color: white;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1.text-center, h2.text-center {
+    color: #1E3A8A;
+    font-size: 2rem;
+}
+
+hr {
+    border: 2px solid #1E3A8A;
+    width: 100px;
+    margin: 10px auto;
 }
 
 /* Media Queries */
@@ -235,11 +483,12 @@ body {
     .nav-links {
         display: none;
         align-items: center;
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
+        height: 100%;
         background-color: #333;
         position: absolute;
-        top: 60px; /* Adjust based on navbar height */
+        top: 70px; /* Adjust based on navbar height */
         left: 0;
     }
 
