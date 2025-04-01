@@ -35,3 +35,32 @@ setInterval(nextSlide, 5000);
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('show');
     });
+
+    gsap.utils.toArray(".book").forEach((book, index) => {
+        gsap.fromTo(book, 
+            { opacity: 0, y: 50 }, 
+            { opacity: 1, y: 0, duration: 0.6, delay: index * 0.1, ease: "power2.out",
+              scrollTrigger: {
+                  trigger: book,
+                  start: "top 80%",
+                  toggleActions: "play reverse play reverse"
+              }
+            }
+        );
+    });
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        gsap.utils.toArray(".news-card").forEach((card, index) => {
+            gsap.fromTo(card, 
+                { opacity: 0, y: 50 }, 
+                { opacity: 1, y: 0, duration: 0.6, delay: index * 0.1, ease: "power2.out",
+                  scrollTrigger: {
+                      trigger: card,
+                      start: "top 80%",
+                      toggleActions: "play reverse play reverse"
+                  }
+                }
+            );
+        });
+    });
+    
