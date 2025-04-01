@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Book Collection</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>    
+<body>
+
+    <nav class="navbar">
+        <div class="logotext">
+            <a href="catalog.html"><img class="logo" src="assets/img/Logo5.png" alt="MCPL logo"></a>
+            <h1>Reading Club 2000</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="catalog.html" class="active">CATALOG</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+        </ul>
+        <div class="Hamburger">
+            <span class="Bar"></span>
+            <span class="Bar"></span>
+            <span class="Bar"></span>
+          </div>
+    </nav>
+    
+    <div class="container">
+        <h1 style="text-align: center; margin-bottom: 30px;">Book Collection</h1>
+        <div class="book-grid" id="bookGrid"></div>
+    </div>
+    <script>
+        const books = [
+            { title: "Java Programming 8E", img: "assets/img/book1.jpg", description: "A novel by F. Scott Fitzgerald." },
+            { title: "Java for Dummies", img: "assets/img/book2.jpg", description: "A fantasy novel by J.K. Rowling." },
+            { title: "SharePoint 2010 Branding and User Interface Design", img: "assets/img/book3.jpg", description: "A novel by Herman Melville." },
+            { title: "Java", img: "assets/img/book1.jpg", description: "A dystopian novel by George Orwell." },
+            { title: "Programming", img: "assets/img/book2.jpg", description: "A novel by Jane Austen." },
+            { title: "Like", img: "assets/img/book3.jpg", description: "A novel by Harper Lee." },
+            { title: "Share", img: "assets/img/book1.jpg", description: "A novel by J.R.R. Tolkien." },
+            { title: "And", img: "assets/img/book2.jpg", description: "A novel by J.D. Salinger." },
+            { title: "Subscribe", img: "assets/img/book3.jpg", description: "A novel by Leo Tolstoy." },
+            { title: "HEHE", img: "assets/img/book1.jpg", description: "A novel by Aldous Huxley." }
+        ];
+
+        const bookGrid = document.getElementById("bookGrid");
+
+        books.forEach((book, index) => {
+            const bookElement = document.createElement("div");
+            bookElement.classList.add("book");
+            bookElement.innerHTML = `
+                <img src="${book.img}" alt="Book Cover">
+                <div class="details">
+                    <p>${book.title}</p>
+                    <p style="font-size: 12px;">${book.description}</p>
+                    <button>View Details</button>
+                </div>
+            `;
+            bookGrid.appendChild(bookElement);
+        });
+
+        gsap.utils.toArray(".book").forEach((book, index) => {
+            gsap.fromTo(book, 
+                { opacity: 0, y: 50 }, 
+                { opacity: 1, y: 0, duration: 0.6, delay: index * 0.1, ease: "power2.out",
+                  scrollTrigger: {
+                      trigger: book,
+                      start: "top 80%",
+                      toggleActions: "play reverse play reverse"
+                  }
+                }
+            );
+        });
+    </script>
+</body>
+</html>

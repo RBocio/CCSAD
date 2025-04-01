@@ -1,4 +1,3 @@
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -10,7 +9,7 @@ body {
     line-height: 1.6;
 }
 
-/* Navbar */
+/* for navbar */
 .navbar {
     display: flex;
     position: fixed;
@@ -65,7 +64,7 @@ body {
 }
 
 
-/* Slider */
+/* for slider in home */
 .slider-container {
     display: flex;
     justify-content: center;
@@ -87,7 +86,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 100vw; /* Full viewport width */
+    width: 100vw;
     position: relative;
     z-index: 1;
 }
@@ -95,7 +94,7 @@ body {
 .slider-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the full screen without distortion */
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
@@ -104,12 +103,12 @@ body {
 .slide-content {
     position: relative;
     margin-top: 25%;
-    z-index: 2; /* Ensure text is above the image */
+    z-index: 2;
     background: linear-gradient(
         to top, 
-        rgb(0, 0, 0) 0%, /* Dark at the bottom */
-        rgb(0, 0, 0) 50%, /* Semi-dark in the middle */
-        rgba(51, 51, 51, 0) 100% /* Transparent at the top */
+        rgb(0, 0, 0) 0%,
+        rgb(0, 0, 0) 50%,
+        rgba(51, 51, 51, 0) 100%
     );
     height: 100%;
     color: white;
@@ -130,23 +129,21 @@ body {
 .slide-description {
     font-size: 18px;
     margin-bottom: 30px;
-    white-space: nowrap; /* Prevents text from wrapping to the next line */
-    overflow: hidden; /* Hides any overflowing content */
+    white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .slide-button {
-    background-color: transparent; /* Transparent background */
-    border: 2px solid rgb(255, 255, 255); /* Black border */
+    background-color: transparent;
+    border: 2px solid rgb(255, 255, 255);
     padding: 10px 20px;
     text-decoration: none;
-    color: rgb(255, 255, 255); /* Black text color */
-    border-radius: 5px; /* Rounded corners */
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
     font-size: 16px;
 }
 
-
-/* Slider Navigation Dots */
 .slider-nav {
     position: absolute;
     bottom: 10px;
@@ -171,13 +168,13 @@ body {
     opacity: 1;
 }
 
-/* News Section */
+/* news section sa home */
 .news-section {
     padding: 2rem;
-    background-size: cover; /* Ensures the image covers the entire background */
-    background-position: center; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    text-align: center; /* Keeps the text centered */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
 }
 
 .news-grid {
@@ -204,14 +201,17 @@ body {
     margin-bottom: 0.5rem;
 }
 
-/* Catalog */
-.containers {
-    background-position: 25% center; /* Move background slightly to the left */
+/* for catalog */
+.catalog{
+    overflow: hidden;
+}
+.container {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 40vw; /* Full width of the viewport */
-    height: 100vh; /* Full height of the viewport */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
     background: #f5f5f5;
     box-shadow: 0 30px 50px #dbdbdb;
 }
@@ -223,7 +223,6 @@ body {
     top: 50%;
     transform: translate(0, -50%);
     border-radius: 20px;
-    box-shadow: 0 30px 50px #505050;
     background-position: 50% 50%;
     background-size: cover;
     display: inline-block;
@@ -242,22 +241,18 @@ body {
 
 
 .slides .items:nth-child(3){
-    left: 90%;
+    left: 50%;
 }
 .slides .items:nth-child(4){
-    left: calc(90% + 220px);
+    left: calc(50% + 220px);
 }
 .slides .items:nth-child(5){
-    left: calc(90% + 440px);
+    left: calc(50% + 440px);
 }
-
-/* here n = 0, 1, 2, 3,... */
 .slides .items:nth-child(n + 6){
-    left: calc(90% + 660px);
+    left: calc(50% + 660px);
     opacity: 0;
 }
-
-
 
 .items .content{
     position: absolute;
@@ -271,11 +266,9 @@ body {
     display: none;
 }
 
-
 .slides .items:nth-child(2) .content{
     display: block;
 }
-
 
 .content .name{
     font-size: 40px;
@@ -300,7 +293,6 @@ body {
     animation: animate 1s ease-in-out 0.6s 1 forwards;
 }
 
-
 @keyframes animate {
     from{
         opacity: 0;
@@ -323,7 +315,6 @@ body {
     animation: animate 1s ease-in-out 0.6s 1 forwards;
 }
 
-/* Animation for text appearance */
 @keyframes animate {
     from {
         opacity: 0;
@@ -337,59 +328,70 @@ body {
     }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .containers {
-        box-shadow: none; /* Optional: Remove shadow for a simpler look on small screens */
-    }
-
-    .containers .slides .items {
-        width: 150px;
-        height: 200px;
-    }
-
-    .items .content {
-        left: 50px; /* Adjust content position */
-        width: auto; /* Let the width adjust automatically */
-    }
-
-    .content .name {
-        font-size: 20px; /* Smaller text size for mobile */
-    }
-
-    .content .des {
-        font-size: 14px; /* Adjust description size */
-    }
-
-    .content button {
-        padding: 8px 16px; /* Smaller button */
-    }
+/*books section*/
+.container {
+    width: 80%;
+    margin: auto;
+    margin-top: 6%;
+    padding: 50px 0;
+}
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+.book {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    opacity: 0;
+}
+.book:hover {
+    transform: scale(1.05);
+}
+.book img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.book .details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.book:hover .details {
+    opacity: 1;
+}
+.details button {
+    background: #ffcc00;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+.details button:hover {
+    background: #e6b800;
 }
 
-
-@media screen and (max-width: 480px) {
-    .containers {
-        height: 300px;
-    }
-
-    .containers .slides .items {
-        width: 120px;
-        height: 200px;
-    }
-
-    .content {
-        left: 30px;
-        width: 200px;
-    }
-
-    .content .name {
-        font-size: 24px;
-    }
-
-    .content button {
-        padding: 6px 12px;
-    }
-}
 
 /* Services Section */
 #services {
@@ -398,6 +400,7 @@ body {
 }
 
 #services h2 {
+    margin-top: 3%;
     font-size: 2rem;
 }
 
@@ -409,24 +412,22 @@ body {
 
 .services-container {
     display: flex;
-    flex-direction: row; /* Ensures left-to-right layout */
-    justify-content: center; /* Centers items horizontally */
-    gap: 20px; /* Adds spacing between items */
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
     margin-top: 30px;
 }
-
 .row {
     display: flex;
-    flex-direction: row; /* Ensure left-to-right alignment */
-    justify-content: center; /* Center items */
-    gap: 20px; /* Space between items */
-    flex-wrap: wrap; /* Allow wrapping for small screens */
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
-
-/* Ensure service boxes have equal width */
 .service-box {
-    width: 300px; /* Adjust size as needed */
+    margin-top: 10%;
+    width: 300px;
     text-align: center;
     padding: 20px;
     border-radius: 10px;
@@ -459,15 +460,19 @@ body {
     }
 }
 
-/* About */
+/* for about */
 #about, #history, #owner {
     background-color: white;
     padding: 50px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+h1.text-centers{
+    margin-top: 6%;
+}
 
-h1.text-center, h2.text-center {
+h1.text-centers, h2.text-center {
+    text-align: center;
     color: #1E3A8A;
     font-size: 2rem;
 }
@@ -478,7 +483,6 @@ hr {
     margin: 10px auto;
 }
 
-/* Media Queries */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -502,9 +506,9 @@ hr {
     .slide-content {
         background: linear-gradient(
         to top, 
-        rgb(0, 0, 0) 0%, /* Dark at the bottom */
-        rgb(0, 0, 0) 50%, /* Semi-dark in the middle */
-        rgba(37, 32, 32, 0.137) 100% /* Transparent at the top */
+        rgb(0, 0, 0) 0%,
+        rgb(0, 0, 0) 50%,
+        rgba(37, 32, 32, 0.137) 100%
     );
         margin-top: 70%;
     }
@@ -518,12 +522,12 @@ hr {
         height: 87vh;
     }
     .news-grid {
-        grid-template-columns: 1fr; /* Single column layout */
+        grid-template-columns: 1fr;
     }
     .news-card {
-        width: 90%; /* Reduce the card width */
+        width: 90%;
         height: 83vh;
-        margin: 0 auto; /* Center the cards */
+        margin: 0 auto;
     }
     .footer-grid {
         grid-template-columns: 1fr;
@@ -543,7 +547,6 @@ hr {
     }
 }
 
-/* For laptops and desktops (screen widths above 768px) */
 @media (min-width: 769px) {
     .navbar {
         flex-direction: row;
@@ -556,10 +559,10 @@ hr {
     }
 
     .news-grid {
-        grid-template-columns: repeat(3, 1fr); /* Three columns for larger screens */
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .footer-grid {
-        grid-template-columns: repeat(3, 1fr); /* Three columns for larger screens */
+        grid-template-columns: repeat(3, 1fr);
     }
 }
